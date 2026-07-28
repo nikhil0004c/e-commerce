@@ -17,44 +17,70 @@
         <a href="products.html">Products</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+        <a href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
     </nav>
 </header>
 
 <main>
 
-    <section>
-        <h2>Welcome to My E-Commerce Store</h2>
-        <p>Best Deals | Fast Delivery | Quality Products</p>
-
-        <input type="text" placeholder="Search products...">
-        <button>Search</button>
-
-        <hr>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>🔥 Big Sale is Live!</h2>
+        <p>Up to 50% OFF on Electronics</p>
+        <button>Shop Now</button>
     </section>
 
-    <h2>Featured Products</h2>
+    <!-- Search -->
+    <section class="search-section">
+        <input type="text" placeholder="Search products...">
+        <button>Search</button>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <h2>Shop by Category</h2>
+
+        <div class="category-container">
+            <div class="category-card">📱 Mobiles</div>
+            <div class="category-card">💻 Laptops</div>
+            <div class="category-card">🎧 Accessories</div>
+            <div class="category-card">⌚ Watches</div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <h2 style="text-align:center;">Featured Products</h2>
 
     <div class="products">
 
+        <!-- Product 1 -->
         <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Phone">
+            <img src="images/iphone.jpg" alt="iPhone 16">
             <h3>iPhone 16</h3>
-            <p>₹79,999</p>
-            <button>Add to Cart</button>
+            <p>⭐⭐⭐⭐⭐ (4.9)</p>
+            <p><del>₹89,999</del></p>
+            <p><strong>₹79,999</strong></p>
+            <button onclick="addToCart('iPhone 16')">🛒 Add to Cart</button>
         </div>
 
+        <!-- Product 2 -->
         <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Laptop">
+            <img src="images/laptop.jpg" alt="Gaming Laptop">
             <h3>Gaming Laptop</h3>
-            <p>₹89,999</p>
-            <button>Add to Cart</button>
+            <p>⭐⭐⭐⭐☆ (4.7)</p>
+            <p><del>₹99,999</del></p>
+            <p><strong>₹89,999</strong></p>
+            <button onclick="addToCart('Gaming Laptop')">🛒 Add to Cart</button>
         </div>
 
+        <!-- Product 3 -->
         <div class="product-card">
-            <img src="https://via.placeholder.com/200" alt="Headphones">
-            <h3>Headphones</h3>
-            <p>₹2,999</p>
-            <button>Add to Cart</button>
+            <img src="images/headphones.jpg" alt="Wireless Headphones">
+            <h3>Wireless Headphones</h3>
+            <p>⭐⭐⭐⭐⭐ (4.8)</p>
+            <p><del>₹3,999</del></p>
+            <p><strong>₹2,999</strong></p>
+            <button onclick="addToCart('Wireless Headphones')">🛒 Add to Cart</button>
         </div>
 
     </div>
@@ -62,8 +88,10 @@
 </main>
 
 <footer>
-    <p>&copy; 2026 My E-Commerce Store</p>
+    <p>&copy; 2026 My E-Commerce Store | All Rights Reserved</p>
 </footer>
+
+<script src="js/script.js"></script>
 
 </body>
 </html>

@@ -87,3 +87,101 @@ section button {
     padding: 10px 20px;
     margin-left: 10px;
 }
+.hero{
+    background:#ff9800;
+    color:white;
+    text-align:center;
+    padding:60px;
+}
+
+.hero h2{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:22px;
+}
+
+.hero button{
+    margin-top:20px;
+    background:white;
+    color:#ff9800;
+    font-size:18px;
+    padding:12px 25px;
+}
+
+.hero button:hover{
+    background:#f2f2f2;
+}
+.search-section {
+    text-align: center;
+    margin: 25px;
+}
+
+.search-section input {
+    width: 300px;
+    padding: 10px;
+}
+
+.categories {
+    text-align: center;
+    margin: 40px 20px;
+}
+
+.category-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.category-card {
+    background: white;
+    padding: 20px;
+    width: 180px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px lightgray;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+}
+.product-card img{
+    width:220px;
+    height:220px;
+    object-fit:contain;
+    margin-bottom:15px;
+}
+
+.product-card{
+    background:#fff;
+    border-radius:10px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,0.15);
+    transition:0.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+}
+
+.product-card del{
+    color:red;
+}
+
+.product-card strong{
+    color:green;
+    font-size:22px;
+}
