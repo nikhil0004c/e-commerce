@@ -16,23 +16,29 @@
 
 <section class="cart-container">
 
-    <table id="cart-table">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Qty</th>
-                <th>Total</th>
-                <th>Action</th>
-            </tr>
-        </thead>
+    <div class="cart-layout">
 
-        <tbody id="cart-items">
-        </tbody>
-    </table>
+    <div id="cart-items" class="cart-items"></div>
 
-    <h2 id="grand-total">Grand Total : ₹0</h2>
+    <div class="summary-box">
 
+        <h2>Order Summary</h2>
+
+        <p>Total Items:
+            <span id="total-items">0</span>
+        </p>
+
+        <p>Total Price:
+            <span id="grand-total">₹0</span>
+        </p>
+
+        <button class="checkout-btn">
+            Proceed to Checkout
+        </button>
+
+    </div>
+
+</div>
 </section>
 
 <script src="js/cart.js"></script>

@@ -1,50 +1,65 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-let cartItems = document.getElementById("cart-items");
-let grandTotal = document.getElementById("grand-total");
-
 displayCart();
 
 function displayCart() {
 
+    const cartItems = document.getElementById("cart-items");
+    const grandTotal = document.getElementById("grand-total");
+    const totalItems = document.getElementById("total-items");
+
     cartItems.innerHTML = "";
 
     let total = 0;
+    let items = 0;
 
-    cart.forEach((item, index) => {
+    cart.forEach((product, index) => {
 
-        let row = `
-        <tr>
-            <td>${item.name}</td>
+        total += product.price * product.quantity;
+        items += product.quantity;
 
-            <td>₹${item.price}</td>
+        cartItems.innerHTML += `
+        <div class="cart-card">
+            <h3>${product.name}</h3>
 
-            <td>${item.quantity}</td>
+            <p>Price: ₹${product.price.toLocaleString("en-IN")}</p>
 
-            <td>₹${item.price * item.quantity}</td>
+            <div class="qty">
+                <button onclick="decrease(${index})">-</button>
+                <span>${product.quantity}</span>
+                <button onclick="increase(${index})">+</button>
+            </div>
 
-            <td>
-                <button onclick="removeItem(${index})">
-                    Remove
-                </button>
-            </td>
-        </tr>
+            <p><strong>Total: ₹${(product.price * product.quantity).toLocaleString("en-IN")}</strong></p>
+
+            <button class="remove-btn" onclick="removeItem(${index})">
+                Remove
+            </button>
+        </div>
         `;
-
-        cartItems.innerHTML += row;
-
-        total += item.price * item.quantity;
-
     });
 
-    grandTotal.innerHTML = "Grand Total : ₹" + total.toLocaleString("en-IN");
+    totalItems.textContent = items;
+    grandTotal.textContent = "₹" + total.toLocaleString("en-IN");
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+function increase(index) {
+    cart[index].quantity++;
+    displayCart();
+}
+
+function decrease(index) {
+    if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+    } else {
+        cart.splice(index, 1);
+    }
+    displayCart();
 }
 
 function removeItem(index) {
-
     cart.splice(index, 1);
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-
     displayCart();
 }
