@@ -3,104 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My E-Commerce Store</title>
+    <title>YONICk | Premium Store</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 <header>
-    <h1>🛒 My E-Commerce Store</h1>
+
+    <h1 class="logo">YONICk</h1>
 
     <nav>
         <a href="index.html">Home</a>
         <a href="products.html">Products</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="cart.html">🛒 Cart (<span id="cart-count">0</span>)</a>
+        <a href="cart.html">
+            🛒 Cart (<span id="cart-count">0</span>)
+        </a>
     </nav>
+
 </header>
 
 <main>
 
     <!-- Hero Section -->
     <section class="hero">
+
         <h2>🔥 Big Sale is Live!</h2>
-        <p>Up to 50% OFF on Electronics</p>
+
+        <p>Up to 69% OFF on Electronics</p>
+
         <button>Shop Now</button>
+
     </section>
 
     <!-- Search -->
     <section class="search-section">
+
         <input
-    type="text"
-    id="search"
-    placeholder="Search products..."
-    onkeyup="searchProducts()">
-        <button>Search</button>
+            type="text"
+            id="search"
+            placeholder="Search Products..."
+            onkeyup="searchProduct()">
+
     </section>
 
     <!-- Categories -->
-   <section class="categories">
-    <h2>Shop by Category</h2>
 
-    <div class="category-container">
-        <button onclick="filterProducts('all')">All</button>
-        <button onclick="filterProducts('mobile')">📱 Mobiles</button>
-        <button onclick="filterProducts('laptop')">💻 Laptops</button>
-        <button onclick="filterProducts('accessory')">🎧 Accessories</button>
-    </div>
-</section>
+    <section class="categories">
 
-    <!-- Featured Products -->
-    <h2 style="text-align:center;">Featured Products</h2>
+        <h2>Shop by Category</h2>
 
-    <div class="products">
+        <div class="category-container">
 
-        <!-- Product 1 -->
-        <div class="product-card" data-category="mobile">
-            <img src="images/iphone.jpg" alt="iPhone 16">
-            <h3>iPhone 16</h3>
-            <p>⭐⭐⭐⭐⭐ (4.9)</p>
-            <p><del>₹89,999</del></p>
-            <p><strong>₹79,999</strong></p>
-            <button onclick="addToCart('iPhone 16', 79999)">
-    🛒 Add to Cart
-</button>
+            <button onclick="filterCategory('All')">All</button>
+            <button onclick="filterCategory('Mobile')">📱 Mobiles</button>
+            <button onclick="filterCategory('Laptop')">💻 Laptops</button>
+            <button onclick="filterCategory('Audio')">🎧 Audio</button>
+            <button onclick="filterCategory('Gaming')">🎮 Gaming</button>
+            <button onclick="filterCategory('Fashion')">👟 Fashion</button>
+            <button onclick="filterCategory('Electronics')">🏠 Electronics</button>
+
         </div>
 
-        <!-- Product 2 -->
-        <div class="product-card" data-category="laptop">
-            <img src="images/laptop.jpg" alt="Gaming Laptop">
-            <h3>Gaming Laptop</h3>
-            <p>⭐⭐⭐⭐☆ (4.7)</p>
-            <p><del>₹99,999</del></p>
-            <p><strong>₹89,999</strong></p>
-            <button onclick="addToCart('Gaming Laptop', 89999)">
-    🛒 Add to Cart
-</button>
-        </div>
+    </section>
 
-        <!-- Product 3 -->
-        <div class="product-card" data-category="accessory">
-            <img src="images/headphones.jpg" alt="Wireless Headphones">
-            <h3>Wireless Headphones</h3>
-            <p>⭐⭐⭐⭐⭐ (4.8)</p>
-            <p><del>₹3,999</del></p>
-            <p><strong>₹2,999</strong></p>
-            <button onclick="addToCart('Wireless Headphones', 2999)">
-    🛒 Add to Cart
-</button>
-        </div>
+    <h2 class="heading">Featured Products</h2>
 
-    </div>
+    <div class="products"></div>
 
 </main>
 
 <footer>
-    <p>&copy; 2026 My E-Commerce Store | All Rights Reserved</p>
+
+    <p>© 2026 YONICk | All Rights Reserved</p>
+
 </footer>
 
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
 <script src="js/script.js"></script>
 
 </body>

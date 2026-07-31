@@ -1,65 +1,181 @@
+// ==========================
+// CART.JS
+// ==========================
+
+// Load cart from localStorage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-displayCart();
+// --------------------------
+// Add Product to Cart
+// --------------------------
+
+function addCart(id) {
+
+    let product = products.find(p => p.id === id);
+
+    let existing = cart.find(item => item.id === id);
+
+    if (existing) {
+
+        existing.quantity++;
+
+    } else {
+
+        cart.push({
+            ...product,
+            quantity: 1
+        });
+
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCartCount();
+
+    alert(product.name + " added to cart!");
+
+}
+
+// --------------------------
+// Update Cart Count
+// --------------------------
+
+function updateCartCount() {
+
+    let count = cart.reduce((total, item) => total + item.quantity, 0);
+
+    let cartCount = document.getElementById("cart-count");
+
+    if (cartCount) {
+        cartCount.innerText = count;
+    }
+
+}
+
+// --------------------------
+// Display Cart
+// --------------------------
 
 function displayCart() {
 
-    const cartItems = document.getElementById("cart-items");
-    const grandTotal = document.getElementById("grand-total");
-    const totalItems = document.getElementById("total-items");
+    let container = document.getElementById("cart-items");
 
-    cartItems.innerHTML = "";
+    if (!container) return;
+
+    container.innerHTML = "";
 
     let total = 0;
-    let items = 0;
 
-    cart.forEach((product, index) => {
+    if (cart.length === 0) {
 
-        total += product.price * product.quantity;
-        items += product.quantity;
+        container.innerHTML = "<h2>Your cart is empty.</h2>";
 
-        cartItems.innerHTML += `
-        <div class="cart-card">
-            <h3>${product.name}</h3>
+        let grand = document.getElementById("grand-total");
 
-            <p>Price: ₹${product.price.toLocaleString("en-IN")}</p>
+        if (grand) grand.innerText = "₹0";
 
-            <div class="qty">
-                <button onclick="decrease(${index})">-</button>
-                <span>${product.quantity}</span>
-                <button onclick="increase(${index})">+</button>
-            </div>
+        return;
 
-            <p><strong>Total: ₹${(product.price * product.quantity).toLocaleString("en-IN")}</strong></p>
+    }
 
-            <button class="remove-btn" onclick="removeItem(${index})">
-                Remove
-            </button>
+    cart.forEach((item, index) => {
+
+        total += item.price * item.quantity;
+
+        container.innerHTML += `
+
+        <div class="product-card">
+
+            <img src="${item.image}" alt="${item.name}">
+
+            <h3>${item.name}</h3>
+
+            <p>₹${item.price.toLocaleString('en-IN')}</p>
+
+            <p>Quantity : ${item.quantity}</p>
+
+            <button onclick="increaseQty(${index})">+</button>
+
+            <button onclick="decreaseQty(${index})">-</button>
+
+            <button onclick="removeItem(${index})">Remove</button>
+
         </div>
+
         `;
+
     });
 
-    totalItems.textContent = items;
-    grandTotal.textContent = "₹" + total.toLocaleString("en-IN");
+    let grand = document.getElementById("grand-total");
 
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-function increase(index) {
-    cart[index].quantity++;
-    displayCart();
-}
-
-function decrease(index) {
-    if (cart[index].quantity > 1) {
-        cart[index].quantity--;
-    } else {
-        cart.splice(index, 1);
+    if (grand) {
+        grand.innerText = "₹" + total.toLocaleString('en-IN');
     }
-    displayCart();
+
 }
+
+// --------------------------
+// Increase Quantity
+// --------------------------
+
+function increaseQty(index) {
+
+    cart[index].quantity++;
+
+    saveCart();
+
+}
+
+// --------------------------
+// Decrease Quantity
+// --------------------------
+
+function decreaseQty(index) {
+
+    if (cart[index].quantity > 1) {
+
+        cart[index].quantity--;
+
+    } else {
+
+        cart.splice(index, 1);
+
+    }
+
+    saveCart();
+
+}
+
+// --------------------------
+// Remove Product
+// --------------------------
 
 function removeItem(index) {
+
     cart.splice(index, 1);
-    displayCart();
+
+    saveCart();
+
 }
+
+// --------------------------
+// Save Cart
+// --------------------------
+
+function saveCart() {
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCartCount();
+
+    displayCart();
+
+}
+
+// --------------------------
+// Initial Load
+// --------------------------
+
+updateCartCount();
+
+displayCart();

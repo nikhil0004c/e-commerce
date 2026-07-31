@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products | YONICk</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1 class="logo">YONICk</h1>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="cart.html">
+            🛒 Cart (<span id="cart-count">0</span>)
+        </a>
+
+    </nav>
+
+</header>
+
+<main>
+
+    <section class="hero">
+
+        <h2>All Products</h2>
+
+        <p>Choose from our premium collection</p>
+
+    </section>
+
+    <section class="search-section">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search Products..."
+            onkeyup="searchProduct()">
+
+    </section>
+
+    <section class="categories">
+
+        <h2>Categories</h2>
+
+        <div class="category-container">
+
+            <button onclick="filterCategory('All')">All</button>
+            <button onclick="filterCategory('Mobile')">Mobiles</button>
+            <button onclick="filterCategory('Laptop')">Laptops</button>
+            <button onclick="filterCategory('Audio')">Audio</button>
+            <button onclick="filterCategory('Gaming')">Gaming</button>
+            <button onclick="filterCategory('Fashion')">Fashion</button>
+            <button onclick="filterCategory('Electronics')">Electronics</button>
+
+        </div>
+
+    </section>
+
+    <div class="products"></div>
+
+</main>
+
+<footer>
+
+    <p>&copy; 2026 YONICk | All Rights Reserved</p>
+
+</footer>
+
+<script src="js/products.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

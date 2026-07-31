@@ -1,78 +1,80 @@
-// Load cart from Local Storage
-console.log("SCRIPT.JS LOADED");
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// ===========================
+// YONICk SCRIPT.JS
+// ===========================
 
-// Update cart count on page load
-updateCartCount();
+// Wait until page loads
+document.addEventListener("DOMContentLoaded", function () {
 
-// Add product to cart
-function addToCart(name, price) {
-
-    let existingProduct = cart.find(item => item.name === name);
-
-    if (existingProduct) {
-        existingProduct.quantity++;
-    } else {
-        cart.push({
-            name: name,
-            price: price,
-            quantity: 1
-        });
+    // Display all products if products.js is loaded
+    if (typeof displayProducts === "function") {
+        displayProducts(products);
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    // Update cart count if cart.js is loaded
+    if (typeof updateCartCount === "function") {
+        updateCartCount();
+    }
 
-    updateCartCount();
+});
 
-    alert(name + " added to cart!");
+
+// ===========================
+// SEARCH
+// ===========================
+
+function searchProduct() {
+
+    let text = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+    let filtered = products.filter(product =>
+        product.name.toLowerCase().includes(text)
+    );
+
+    displayProducts(filtered);
 }
 
-// Update cart count
-function updateCartCount() {
 
-    let total = 0;
+// ===========================
+// CATEGORY FILTER
+// ===========================
 
-    cart.forEach(item => {
-        total += item.quantity;
-    });
+function filterCategory(category) {
 
-    document.getElementById("cart-count").textContent = total;
-}
+    if (category === "All") {
 
-// Search products
-function searchProducts() {
+        displayProducts(products);
 
-    const input = document.getElementById("search").value.toLowerCase();
+    } else {
 
-    const products = document.querySelectorAll(".product-card");
+        let filtered = products.filter(product =>
+            product.category === category
+        );
 
-    products.forEach(product => {
+        displayProducts(filtered);
 
-        const productName = product.querySelector("h3").textContent.toLowerCase();
-
-        if (productName.includes(input)) {
-            product.style.display = "";
-        } else {
-            product.style.display = "none";
-        }
-
-    });
+    }
 
 }
-function filterProducts(category) {
 
-    const products = document.querySelectorAll(".product-card");
 
-    products.forEach(product => {
+// ===========================
+// HERO BUTTON
+// ===========================
 
-        if (
-            category === "all" ||
-            product.dataset.category === category
-        ) {
-            product.style.display = "block";
-        } else {
-            product.style.display = "none";
-        }
+const heroButton = document.querySelector(".hero button");
+
+if (heroButton) {
+
+    heroButton.addEventListener("click", function () {
+
+        document.querySelector(".products").scrollIntoView({
+
+            behavior: "smooth"
+
+        });
 
     });
 
