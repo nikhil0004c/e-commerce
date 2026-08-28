@@ -4,86 +4,549 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Products | YONICk</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css">
 
 </head>
 
+
 <body>
+
+
+<!-- ==========================================
+     HEADER
+========================================== -->
 
 <header>
 
-    <h1 class="logo">YONICk</h1>
+    <a
+        href="index.html"
+        class="logo">
+
+        YONICk
+
+    </a>
+
 
     <nav>
 
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html">
+            🏠 Home
+        </a>
+
+        <a
+            href="products.html"
+            class="active">
+
+            🛍️ Products
+
+        </a>
+
+        <a href="about.html">
+            ℹ️ About
+        </a>
+
+        <a href="contact.html">
+            📞 Contact
+        </a>
+
+
+        <!-- WISHLIST -->
+
+        <a href="wishlist.html">
+
+            ❤️ Wishlist
+            (<span id="wishlist-count">0</span>)
+
+        </a>
+
+
+        <!-- CART -->
 
         <a href="cart.html">
-            🛒 Cart (<span id="cart-count">0</span>)
+
+            🛒 Cart
+            (<span id="cart-count">0</span>)
+
         </a>
 
     </nav>
 
 </header>
 
+
+
+<!-- ==========================================
+     MAIN
+========================================== -->
+
 <main>
 
-    <section class="hero">
 
-        <h2>All Products</h2>
+    <!-- ======================================
+         PRODUCTS HERO
+    ======================================= -->
 
-        <p>Choose from our premium collection</p>
+    <section class="hero products-hero">
 
-    </section>
+        <div class="hero-content">
 
-    <section class="search-section">
+            <span class="sale-badge">
+                🛍️ YONICk COLLECTION
+            </span>
 
-        <input
-            type="text"
-            id="search"
-            placeholder="Search Products..."
-            onkeyup="searchProduct()">
 
-    </section>
+            <h1>
+                Explore Our
+                <br>
+                Products
+            </h1>
 
-    <section class="categories">
 
-        <h2>Categories</h2>
+            <p>
+                Discover electronics, gaming,
+                fashion and lifestyle products
+                selected for you.
+            </p>
 
-        <div class="category-container">
 
-            <button onclick="filterCategory('All')">All</button>
-            <button onclick="filterCategory('Mobile')">Mobiles</button>
-            <button onclick="filterCategory('Laptop')">Laptops</button>
-            <button onclick="filterCategory('Audio')">Audio</button>
-            <button onclick="filterCategory('Gaming')">Gaming</button>
-            <button onclick="filterCategory('Fashion')">Fashion</button>
-            <button onclick="filterCategory('Electronics')">Electronics</button>
+            <div class="hero-highlight">
+
+                <strong>
+                    30+ Products
+                </strong>
+
+                <span>
+                    across 6 categories
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-decoration">
+
+            <div class="hero-circle">
+                🛍️
+            </div>
 
         </div>
 
     </section>
 
+
+
+    <!-- ======================================
+         SEARCH
+    ======================================= -->
+
+    <section class="search-section">
+
+        <div class="home-search">
+
+            <span>
+                🔍
+            </span>
+
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search products, brands and more..."
+            >
+
+
+            <button
+                id="clear-search"
+                aria-label="Clear search">
+
+                ✕
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         CATEGORIES
+    ======================================= -->
+
+    <section class="categories">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-eyebrow">
+                    BROWSE
+                </span>
+
+
+                <h2>
+                    Shop by Category
+                </h2>
+
+
+                <p>
+                    Choose a category to discover
+                    products you love.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="category-container">
+
+
+            <button
+                class="category-btn active"
+                onclick="filterCategory('All')">
+
+                <span>
+                    🛍️
+                </span>
+
+                <strong>
+                    All
+                </strong>
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Mobile')">
+
+                <span>
+                    📱
+                </span>
+
+                <strong>
+                    Mobiles
+                </strong>
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Laptop')">
+
+                <span>
+                    💻
+                </span>
+
+                <strong>
+                    Laptops
+                </strong>
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Audio')">
+
+                <span>
+                    🎧
+                </span>
+
+                <strong>
+                    Audio
+                </strong>
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Gaming')">
+
+                <span>
+                    🎮
+                </span>
+
+                <strong>
+                    Gaming
+                </strong>
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Fashion')">
+
+                <span>
+                    👟
+                </span>
+
+                <strong>
+                    Fashion
+                </strong>
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Electronics')">
+
+                <span>
+                    🏠
+                </span>
+
+                <strong>
+                    Electronics
+                </strong>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         FILTERS
+    ======================================= -->
+
+    <section class="filter-section home-filter">
+
+
+        <div class="filter-item">
+
+            <label for="price-filter">
+                💰 Maximum Price
+            </label>
+
+
+            <input
+                type="range"
+                id="price-filter"
+                min="500"
+                max="200000"
+                value="200000"
+                step="500"
+            >
+
+
+            <span id="price-value">
+                ₹2,00,000
+            </span>
+
+        </div>
+
+
+        <div class="filter-item">
+
+            <label for="sort-products">
+                ↕️ Sort Products
+            </label>
+
+
+            <select id="sort-products">
+
+                <option value="default">
+                    Recommended
+                </option>
+
+                <option value="low">
+                    Price: Low → High
+                </option>
+
+                <option value="high">
+                    Price: High → Low
+                </option>
+
+                <option value="az">
+                    Name: A → Z
+                </option>
+
+                <option value="za">
+                    Name: Z → A
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         PRODUCT HEADER
+    ======================================= -->
+
+    <section class="product-heading">
+
+        <div>
+
+            <span class="section-eyebrow">
+                ALL PRODUCTS
+            </span>
+
+
+            <h2>
+                Our Collection
+            </h2>
+
+
+            <p>
+
+                <span id="product-count">
+                    0
+                </span>
+
+                products available
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         PRODUCTS GRID
+    ======================================= -->
+
     <div class="products"></div>
+
+
+
+    <!-- ======================================
+         NO PRODUCTS
+    ======================================= -->
+
+    <div
+        id="no-products"
+        class="no-products">
+
+        <div>
+            😔
+        </div>
+
+
+        <h2>
+            No products found
+        </h2>
+
+
+        <p>
+            Try changing your search,
+            category or price filter.
+        </p>
+
+
+        <button onclick="resetFilters()">
+            Reset Filters
+        </button>
+
+    </div>
+
 
 </main>
 
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
 <footer>
 
-    <p>&copy; 2026 YONICk | All Rights Reserved</p>
+    <div class="footer-content">
+
+
+        <div class="footer-brand">
+
+            <h2>
+                YONICk
+            </h2>
+
+
+            <p>
+                Your premium destination for
+                electronics, fashion and
+                lifestyle products.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="wishlist.html">
+                Wishlist
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 YONICk |
+                All Rights Reserved
+            </p>
+
+        </div>
+
+    </div>
 
 </footer>
 
+
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+
 <script src="js/products.js"></script>
+
 <script src="js/cart.js"></script>
+
 <script src="js/script.js"></script>
 
+
 </body>
+
 </html>

@@ -52,6 +52,10 @@
             (<span id="cart-count">0</span>)
         </a>
 
+        <a href="orders.html">
+            📦 My Orders
+        </a>
+
     </nav>
 
 </header>
@@ -284,6 +288,8 @@
 
 <script src="js/cart.js"></script>
 
+<script src="js/orders.js"></script>
+
 
 <script>
 
@@ -389,6 +395,14 @@ function loadOrder() {
         return;
 
     }
+
+
+
+    // ======================================
+    // SAVE ORDER TO ORDER HISTORY
+    // ======================================
+
+    saveOrderToHistory();
 
 
 

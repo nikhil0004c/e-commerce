@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Orders | YONICk</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     ADMIN HEADER
+========================================== -->
+
+<header>
+
+    <h1 class="logo">
+        YONICk Admin
+    </h1>
+
+
+    <nav>
+
+        <a href="index.html">
+            🏠 Store
+        </a>
+
+        <a href="products.html">
+            🛍️ Products
+        </a>
+
+        <a href="orders.html">
+            📦 My Orders
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ==========================================
+     MAIN
+========================================== -->
+
+<main class="admin-container">
+
+
+    <!-- PAGE TITLE -->
+
+    <section class="admin-title">
+
+        <h1>
+            📋 Order Management
+        </h1>
+
+        <p>
+            Manage and update customer orders
+        </p>
+
+    </section>
+
+
+
+    <!-- ======================================
+         SEARCH
+    ======================================= -->
+
+    <section class="admin-search">
+
+        <input
+            type="text"
+            id="admin-search"
+            placeholder="🔎 Search by Order ID..."
+        >
+
+    </section>
+
+
+
+    <!-- ======================================
+         ORDER STATISTICS
+    ======================================= -->
+
+    <section class="admin-stats">
+
+        <div class="admin-stat-card">
+
+            <span>
+                📦
+            </span>
+
+            <div>
+
+                <small>
+                    Total Orders
+                </small>
+
+                <strong id="total-orders">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <span>
+                🟢
+            </span>
+
+            <div>
+
+                <small>
+                    Confirmed
+                </small>
+
+                <strong id="confirmed-orders">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <span>
+                🚚
+            </span>
+
+            <div>
+
+                <small>
+                    Shipped
+                </small>
+
+                <strong id="shipped-orders">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-stat-card">
+
+            <span>
+                🎉
+            </span>
+
+            <div>
+
+                <small>
+                    Delivered
+                </small>
+
+                <strong id="delivered-orders">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         ORDERS
+    ======================================= -->
+
+    <section>
+
+        <div id="admin-orders-list">
+
+            <!-- Orders will appear here -->
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>
+            YONICk
+        </h2>
+
+        <p>
+            Admin Order Management
+        </p>
+
+        <p>
+            © 2026 YONICk |
+            All Rights Reserved
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+
+<script src="js/orders.js"></script>
+
+<script src="js/admin-orders.js"></script>
+
+
+</body>
+
+</html>

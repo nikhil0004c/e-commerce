@@ -27,37 +27,51 @@
 
 <header>
 
-    <h1 class="logo">
+    <a
+        href="index.html"
+        class="logo">
+
         YONICk
-    </h1>
+
+    </a>
 
 
     <nav>
 
         <a href="index.html">
-            Home
+            🏠 Home
         </a>
 
         <a href="products.html">
-            Products
+            🛍️ Products
         </a>
 
         <a href="about.html">
-            About
+            ℹ️ About
         </a>
 
         <a href="contact.html">
-            Contact
+            📞 Contact
         </a>
+
+
+        <!-- WISHLIST -->
 
         <a href="wishlist.html">
+
             ❤️ Wishlist
             (<span id="wishlist-count">0</span>)
+
         </a>
 
+
+        <!-- CART -->
+
         <a href="cart.html">
+
             🛒 Cart
             (<span id="cart-count">0</span>)
+
         </a>
 
     </nav>
@@ -72,11 +86,200 @@
 
 <main>
 
-    <div id="product-detail">
 
-        <!-- Product loaded by JavaScript -->
+    <!-- ======================================
+         BREADCRUMB
+    ======================================= -->
+
+    <div class="product-breadcrumb">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <span>
+            /
+        </span>
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <span>
+            /
+        </span>
+
+        <strong>
+            Product
+        </strong>
 
     </div>
+
+
+
+    <!-- ======================================
+         PRODUCT DETAIL
+    ======================================= -->
+
+    <section
+        id="product-detail"
+        class="product-detail-page">
+
+        <!-- Product loaded by product.js -->
+
+    </section>
+
+
+
+    <!-- ======================================
+         RELATED PRODUCTS
+    ======================================= -->
+
+    <section class="related-products">
+
+        <div class="related-heading">
+
+            <span>
+                YOU MAY ALSO LIKE
+            </span>
+
+            <h2>
+                Related Products
+            </h2>
+
+            <p>
+                More products you might love
+            </p>
+
+        </div>
+
+
+        <div
+            id="related-products"
+            class="products">
+
+            <!-- Related products loaded by product.js -->
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         TRUST FEATURES
+    ======================================= -->
+
+    <section class="product-trust">
+
+
+        <div class="trust-item">
+
+            <span>
+                🚚
+            </span>
+
+            <div>
+
+                <strong>
+                    Fast Delivery
+                </strong>
+
+                <p>
+                    Quick and reliable delivery
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="trust-item">
+
+            <span>
+                🔒
+            </span>
+
+            <div>
+
+                <strong>
+                    Secure Payment
+                </strong>
+
+                <p>
+                    Your payment is protected
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="trust-item">
+
+            <span>
+                ↩️
+            </span>
+
+            <div>
+
+                <strong>
+                    Easy Returns
+                </strong>
+
+                <p>
+                    Hassle-free return policy
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="trust-item">
+
+            <span>
+                🛡️
+            </span>
+
+            <div>
+
+                <strong>
+                    Trusted Shopping
+                </strong>
+
+                <p>
+                    Shop with confidence
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ======================================
+         BACK TO PRODUCTS
+    ======================================= -->
+
+    <div class="product-back">
+
+        <a
+            href="products.html"
+            class="success-btn secondary">
+
+            ← Continue Shopping
+
+        </a>
+
+    </div>
+
 
 </main>
 
@@ -90,20 +293,63 @@
 
     <div class="footer-content">
 
-        <h2>
-            YONICk
-        </h2>
 
-        <p>
-            Your premium destination
-            for electronics, fashion
-            and lifestyle products.
-        </p>
+        <div class="footer-brand">
 
-        <p>
-            © 2026 YONICk |
-            All Rights Reserved
-        </p>
+            <h2>
+                YONICk
+            </h2>
+
+
+            <p>
+                Your premium destination for
+                electronics, fashion and
+                lifestyle products.
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="products.html">
+                Products
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="wishlist.html">
+                Wishlist
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 YONICk |
+                All Rights Reserved
+            </p>
+
+        </div>
+
 
     </div>
 

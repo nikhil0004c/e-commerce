@@ -13,7 +13,7 @@ const products = [
         name: "iPhone 16",
         category: "Mobile",
         price: 79999,
-        image: "images/iphone.jpg"
+        image: "images/iphone-16.jpg"
     },
 
     {
@@ -21,7 +21,7 @@ const products = [
         name: "Samsung Galaxy S25 Ultra",
         category: "Mobile",
         price: 119999,
-        image: "images/iphone.jpg"
+        image: "images/samsung-s25-ultra.jpg"
     },
 
     {
@@ -29,7 +29,7 @@ const products = [
         name: "OnePlus 13",
         category: "Mobile",
         price: 69999,
-        image: "images/iphone.jpg"
+        image: "images/oneplus-13.jpg"
     },
 
     {
@@ -37,7 +37,7 @@ const products = [
         name: "Google Pixel 9",
         category: "Mobile",
         price: 74999,
-        image: "images/iphone.jpg"
+        image: "images/pixel-9.jpg"
     },
 
     {
@@ -45,7 +45,7 @@ const products = [
         name: "Samsung Galaxy A56",
         category: "Mobile",
         price: 39999,
-        image: "images/iphone.jpg"
+        image: "images/samsung-a56.jpg"
     },
 
 
@@ -58,7 +58,7 @@ const products = [
         name: "MacBook Pro M4",
         category: "Laptop",
         price: 149999,
-        image: "images/laptop.jpg"
+        image: "images/macbook-pro-m4.jpg"
     },
 
     {
@@ -66,7 +66,7 @@ const products = [
         name: "MacBook Air M3",
         category: "Laptop",
         price: 99999,
-        image: "images/laptop.jpg"
+        image: "images/macbook-air-m3.jpg"
     },
 
     {
@@ -74,7 +74,7 @@ const products = [
         name: "Dell Inspiron 15",
         category: "Laptop",
         price: 64999,
-        image: "images/laptop.jpg"
+        image: "images/dell-inspiron-15.jpg"
     },
 
     {
@@ -82,7 +82,7 @@ const products = [
         name: "HP Pavilion 14",
         category: "Laptop",
         price: 59999,
-        image: "images/laptop.jpg"
+        image: "images/hp-pavilion-14.jpg"
     },
 
     {
@@ -90,7 +90,7 @@ const products = [
         name: "ASUS VivoBook 15",
         category: "Laptop",
         price: 54999,
-        image: "images/laptop.jpg"
+        image: "images/asus-vivobook-15.jpg"
     },
 
 
@@ -103,7 +103,7 @@ const products = [
         name: "Sony WH-1000XM5",
         category: "Audio",
         price: 29999,
-        image: "images/headphones.jpg"
+        image: "images/sony-wh1000xm5.jpg"
     },
 
     {
@@ -111,7 +111,7 @@ const products = [
         name: "Apple AirPods Pro",
         category: "Audio",
         price: 24999,
-        image: "images/headphones.jpg"
+        image: "images/airpods-pro.jpg"
     },
 
     {
@@ -119,7 +119,7 @@ const products = [
         name: "Samsung Galaxy Buds 3",
         category: "Audio",
         price: 14999,
-        image: "images/headphones.jpg"
+        image: "images/galaxy-buds-3.jpg"
     },
 
     {
@@ -127,7 +127,7 @@ const products = [
         name: "JBL Tune 770NC",
         category: "Audio",
         price: 6999,
-        image: "images/headphones.jpg"
+        image: "images/jbl-tune-770nc.jpg"
     },
 
     {
@@ -135,7 +135,7 @@ const products = [
         name: "Boat Rockerz 550",
         category: "Audio",
         price: 1999,
-        image: "images/headphones.jpg"
+        image: "images/boat-rockerz-550.jpg"
     },
 
 
@@ -148,7 +148,7 @@ const products = [
         name: "PlayStation 5",
         category: "Gaming",
         price: 54999,
-        image: "images/laptop.jpg"
+        image: "images/playstation-5.jpg"
     },
 
     {
@@ -156,7 +156,7 @@ const products = [
         name: "Xbox Series X",
         category: "Gaming",
         price: 52999,
-        image: "images/laptop.jpg"
+        image: "images/xbox-series-x.jpg"
     },
 
     {
@@ -164,7 +164,7 @@ const products = [
         name: "Gaming Keyboard RGB",
         category: "Gaming",
         price: 3499,
-        image: "images/headphones.jpg"
+        image: "images/gaming-keyboard.jpg"
     },
 
     {
@@ -172,7 +172,7 @@ const products = [
         name: "Gaming Mouse RGB",
         category: "Gaming",
         price: 1999,
-        image: "images/headphones.jpg"
+        image: "images/gaming-mouse.jpg"
     },
 
     {
@@ -180,7 +180,7 @@ const products = [
         name: "Gaming Headset",
         category: "Gaming",
         price: 4999,
-        image: "images/headphones.jpg"
+        image: "images/gaming-headset.jpg"
     },
 
 
@@ -193,7 +193,7 @@ const products = [
         name: "Premium Sneakers",
         category: "Fashion",
         price: 3999,
-        image: "images/laptop.jpg"
+        image: "images/premium-sneakers.jpg"
     },
 
     {
@@ -201,7 +201,7 @@ const products = [
         name: "Classic Running Shoes",
         category: "Fashion",
         price: 2999,
-        image: "images/laptop.jpg"
+        image: "images/running-shoes.jpg"
     },
 
     {
@@ -209,7 +209,7 @@ const products = [
         name: "Premium Hoodie",
         category: "Fashion",
         price: 1999,
-        image: "images/laptop.jpg"
+        image: "images/premium-hoodie.jpg"
     },
 
     {
@@ -217,7 +217,7 @@ const products = [
         name: "Oversized T-Shirt",
         category: "Fashion",
         price: 999,
-        image: "images/laptop.jpg"
+        image: "images/oversized-tshirt.jpg"
     },
 
     {
@@ -225,7 +225,7 @@ const products = [
         name: "Denim Jacket",
         category: "Fashion",
         price: 2499,
-        image: "images/laptop.jpg"
+        image: "images/denim-jacket.jpg"
     },
 
 
@@ -238,7 +238,7 @@ const products = [
         name: "Smart LED TV",
         category: "Electronics",
         price: 45999,
-        image: "images/laptop.jpg"
+        image: "images/smart-tv.jpg"
     },
 
     {
@@ -246,7 +246,7 @@ const products = [
         name: "Smart Watch",
         category: "Electronics",
         price: 5999,
-        image: "images/iphone.jpg"
+        image: "images/smart-watch.jpg"
     },
 
     {
@@ -254,7 +254,7 @@ const products = [
         name: "Power Bank 20000mAh",
         category: "Electronics",
         price: 1999,
-        image: "images/headphones.jpg"
+        image: "images/power-bank.jpg"
     },
 
     {
@@ -262,7 +262,7 @@ const products = [
         name: "Wireless Charger",
         category: "Electronics",
         price: 1499,
-        image: "images/headphones.jpg"
+        image: "images/wireless-charger.jpg"
     },
 
     {
@@ -270,7 +270,7 @@ const products = [
         name: "Bluetooth Speaker",
         category: "Electronics",
         price: 2999,
-        image: "images/headphones.jpg"
+        image: "images/bluetooth-speaker.jpg"
     }
 
 ];
@@ -339,6 +339,7 @@ function displayProducts(items) {
     items.forEach(product => {
 
         const isWishlisted =
+            typeof wishlist !== "undefined" &&
             wishlist.some(
                 item => item.id === product.id
             );
@@ -351,8 +352,6 @@ function displayProducts(items) {
                 onclick="openProduct(${product.id})"
             >
 
-                <!-- PRODUCT IMAGE -->
-
                 <div class="product-image">
 
                     <span class="product-category">
@@ -363,14 +362,12 @@ function displayProducts(items) {
                         src="${product.image}"
                         alt="${product.name}"
                         onerror="
-                            this.src='images/iphone.jpg'
+                            this.src='images/iphone-16.jpg'
                         "
                     >
 
                 </div>
 
-
-                <!-- PRODUCT INFORMATION -->
 
                 <div class="product-info">
 
@@ -386,8 +383,6 @@ function displayProducts(items) {
                         ₹${product.price.toLocaleString("en-IN")}
                     </p>
 
-
-                    <!-- WISHLIST -->
 
                     <button
                         class="wishlist-btn ${
@@ -409,8 +404,6 @@ function displayProducts(items) {
 
                     </button>
 
-
-                    <!-- ADD TO CART -->
 
                     <button
                         class="add-cart-btn"

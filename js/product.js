@@ -2,11 +2,6 @@
 // YONICk PRODUCT DETAILS
 // ==========================================
 
-
-// ==========================================
-// DETAIL QUANTITY
-// ==========================================
-
 let detailQuantity = 1;
 
 
@@ -14,18 +9,15 @@ let detailQuantity = 1;
 // PAGE LOAD
 // ==========================================
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-        updateCartCount();
+    updateCartCount();
 
-        updateWishlistCount();
+    updateWishlistCount();
 
-        loadProduct();
+    loadProduct();
 
-    }
-);
+});
 
 
 // ==========================================
@@ -35,28 +27,19 @@ document.addEventListener(
 function loadProduct() {
 
     const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
+        new URLSearchParams(window.location.search);
 
     const productId =
-        Number(
-            params.get("id")
-        );
-
+        Number(params.get("id"));
 
     const product =
-        products.find(
-            item =>
-                item.id === productId
-        );
-
+        products.find(item => item.id === productId);
 
     const container =
-        document.getElementById(
-            "product-detail"
-        );
+        document.getElementById("product-detail");
+
+
+    if (!container) return;
 
 
     // ==========================================
@@ -69,18 +52,24 @@ function loadProduct() {
 
             <div class="product-not-found">
 
+                <div style="font-size:50px;">
+                    😔
+                </div>
+
                 <h2>
-                    😔 Product Not Found
+                    Product Not Found
                 </h2>
 
                 <p>
-                    The product you are looking
-                    for does not exist.
+                    The product you are looking for
+                    does not exist.
                 </p>
 
-                <a href="index.html">
+                <a
+                    href="products.html"
+                    class="success-btn primary">
 
-                    ← Back to Store
+                    ← Back to Products
 
                 </a>
 
@@ -100,15 +89,16 @@ function loadProduct() {
     const rating =
         getProductRating(product.id);
 
+    const reviews =
+        getReviewCount(product.id);
+
 
     // ==========================================
     // OLD PRICE
     // ==========================================
 
     const oldPrice =
-        Math.round(
-            product.price * 1.15
-        );
+        Math.round(product.price * 1.15);
 
 
     // ==========================================
@@ -117,10 +107,7 @@ function loadProduct() {
 
     const discount =
         Math.round(
-            (
-                (oldPrice - product.price)
-                / oldPrice
-            ) * 100
+            ((oldPrice - product.price) / oldPrice) * 100
         );
 
 
@@ -129,64 +116,96 @@ function loadProduct() {
     // ==========================================
 
     const isWishlisted =
+        typeof wishlist !== "undefined" &&
         wishlist.some(
-            item =>
-                item.id === product.id
+            item => item.id === product.id
         );
 
 
     // ==========================================
-    // PRODUCT DETAILS HTML
+    // PRODUCT DETAILS
     // ==========================================
 
     container.innerHTML = `
 
-        <section class="product-detail">
+        <div class="product-detail-card">
 
 
             <!-- ==================================
-                 IMAGE
+                 PRODUCT IMAGE GALLERY
             ================================== -->
 
-            <div class="detail-image">
-
-                <span class="detail-category">
-
-                    ${product.category}
-
-                </span>
+            <div class="product-gallery">
 
 
-                <img
-                    src="${product.image}"
-                    alt="${product.name}"
+                <!-- MAIN IMAGE -->
 
-                    onerror="
-                        this.src='images/iphone.jpg'
-                    "
-                >
+                <div class="product-detail-image">
+
+                    <span class="product-detail-category">
+
+                        ${product.category}
+
+                    </span>
+
+
+                    <img
+                        id="main-product-image"
+                        src="${product.image}"
+                        alt="${product.name}"
+                        onerror="
+                            this.src='images/iphone-16.jpg'
+                        "
+                    >
+
+                </div>
+
+
+                <!-- ==================================
+                     IMAGE THUMBNAILS
+                ================================== -->
+
+                <div class="product-thumbnails">
+
+                    <button
+                        class="product-thumbnail active"
+                        onclick="
+                            changeProductImage(
+                                '${product.image}',
+                                this
+                            )
+                        "
+                    >
+
+                        <img
+                            src="${product.image}"
+                            alt="${product.name}"
+                            onerror="
+                                this.src='images/iphone-16.jpg'
+                            "
+                        >
+
+                    </button>
+
+                </div>
 
             </div>
 
 
 
             <!-- ==================================
-                 INFORMATION
+                 PRODUCT INFORMATION
             ================================== -->
 
-            <div class="detail-info">
+            <div class="product-detail-info">
 
 
-                <!-- CATEGORY -->
-
-                <p class="detail-category-text">
+                <div class="product-detail-category-text">
 
                     ${product.category}
 
-                </p>
+                </div>
 
-
-                <!-- NAME -->
 
                 <h1>
 
@@ -195,40 +214,58 @@ function loadProduct() {
                 </h1>
 
 
-                <!-- ==================================
-                     RATING
-                ================================== -->
+                <!-- RATING -->
 
-                <div class="rating">
+                <div class="product-rating">
 
-                    ⭐ ${rating}
+                    <span class="stars">
+
+                        ⭐⭐⭐⭐⭐
+
+                    </span>
+
+                    <strong>
+
+                        ${rating}
+
+                    </strong>
 
                     <span>
 
-                        (${getReviewCount(product.id)}
-                        Reviews)
+                        (${reviews} Reviews)
 
                     </span>
 
                 </div>
 
 
-                <!-- ==================================
-                     PRICE
-                ================================== -->
+                <!-- DESCRIPTION -->
 
-                <div class="detail-price">
+                <p class="product-detail-description">
+
+                    Experience premium quality with the
+                    ${product.name}. Designed for modern
+                    users, this ${product.category.toLowerCase()}
+                    product delivers excellent performance,
+                    reliability and style.
+
+                </p>
+
+
+                <!-- PRICE -->
+
+                <div class="product-detail-price">
+
+                    ₹${product.price.toLocaleString("en-IN")}
+
+                </div>
+
+
+                <div class="product-price-extra">
 
                     <span class="old-price">
 
                         ₹${oldPrice.toLocaleString("en-IN")}
-
-                    </span>
-
-
-                    <span class="current-price">
-
-                        ₹${product.price.toLocaleString("en-IN")}
 
                     </span>
 
@@ -249,30 +286,11 @@ function loadProduct() {
                 </p>
 
 
-                <!-- ==================================
-                     DESCRIPTION
-                ================================== -->
+                <!-- OFFER -->
 
-                <div class="description">
+                <div class="product-offer">
 
-                    <h3>
-
-                        About this product
-
-                    </h3>
-
-
-                    <p>
-
-                        Experience premium quality
-                        with the ${product.name}.
-                        Designed for modern users,
-                        this ${product.category.toLowerCase()}
-                        product delivers excellent
-                        performance, reliability
-                        and style.
-
-                    </p>
+                    🎉 Special offer available on this product
 
                 </div>
 
@@ -283,31 +301,89 @@ function loadProduct() {
 
                 <div class="product-features">
 
-                    <h3>
 
-                        Key Features
+                    <div class="product-feature">
 
-                    </h3>
+                        <div class="product-feature-icon">
+                            ⚡
+                        </div>
 
-                    <ul>
+                        <div>
 
-                        <li>
-                            ✓ Premium quality
-                        </li>
+                            <strong>
+                                Premium Quality
+                            </strong>
 
-                        <li>
-                            ✓ Modern design
-                        </li>
+                            <span>
+                                Carefully selected product
+                            </span>
 
-                        <li>
-                            ✓ Reliable performance
-                        </li>
+                        </div>
 
-                        <li>
-                            ✓ Suitable for everyday use
-                        </li>
+                    </div>
 
-                    </ul>
+
+                    <div class="product-feature">
+
+                        <div class="product-feature-icon">
+                            🛡️
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Reliable
+                            </strong>
+
+                            <span>
+                                Built for everyday use
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-feature">
+
+                        <div class="product-feature-icon">
+                            ✨
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Modern Design
+                            </strong>
+
+                            <span>
+                                Stylish and practical
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-feature">
+
+                        <div class="product-feature-icon">
+                            📦
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Secure Packaging
+                            </strong>
+
+                            <span>
+                                Carefully packed for delivery
+                            </span>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -330,15 +406,12 @@ function loadProduct() {
                 <div class="detail-quantity">
 
                     <strong>
-
                         Quantity:
-
                     </strong>
 
 
                     <button
-                        onclick="changeDetailQty(-1)"
-                    >
+                        onclick="changeDetailQty(-1)">
 
                         −
 
@@ -353,8 +426,7 @@ function loadProduct() {
 
 
                     <button
-                        onclick="changeDetailQty(1)"
-                    >
+                        onclick="changeDetailQty(1)">
 
                         +
 
@@ -364,51 +436,32 @@ function loadProduct() {
 
 
                 <!-- ==================================
-                     BUTTONS
+                     ACTION BUTTONS
                 ================================== -->
 
-                <div class="detail-buttons">
+                <div class="product-actions">
 
-
-                    <!-- ADD TO CART -->
 
                     <button
-                        class="detail-cart-btn"
-
+                        class="product-add-cart"
                         onclick="
-                            addProductToCart(
-                                ${product.id}
-                            )
-                        "
-                    >
+                            addProductToCart(${product.id})
+                        ">
 
                         🛒 Add to Cart
 
                     </button>
 
 
-                    <!-- WISHLIST -->
-
                     <button
-                        class="
-                            wishlist-btn
-                            ${isWishlisted
-                                ? "wishlisted"
-                                : ""
-                            }
-                        "
-
                         id="wishlist-btn"
-
-                        data-product-id="${product.id}"
-
+                        class="
+                            product-wishlist
+                            ${isWishlisted ? "wishlisted" : ""}
+                        "
                         onclick="
-                            toggleWishlist(
-                                ${product.id}
-                            );
-                            updateProductWishlistButton(
-                                ${product.id}
-                            );
+                            toggleWishlist(${product.id});
+                            updateProductWishlistButton(${product.id});
                         "
                     >
 
@@ -424,24 +477,247 @@ function loadProduct() {
 
 
                 <!-- ==================================
-                     BACK
+                     QUICK INFO
                 ================================== -->
 
-                <a
-                    href="index.html"
-                    class="back-products"
-                >
+                <div class="product-quick-info">
 
-                    ← Continue Shopping
 
-                </a>
+                    <div>
+
+                        🚚
+
+                        <strong>
+                            Free Delivery
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        🔒
+
+                        <strong>
+                            Secure Payment
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        ↩️
+
+                        <strong>
+                            Easy Returns
+                        </strong>
+
+                    </div>
+
+
+                </div>
 
 
             </div>
 
-        </section>
+        </div>
 
     `;
+
+
+    // ==========================================
+    // LOAD RELATED PRODUCTS
+    // ==========================================
+
+    displayRelatedProducts(product);
+
+}
+
+
+// ==========================================
+// CHANGE PRODUCT IMAGE
+// ==========================================
+
+function changeProductImage(image, thumbnail) {
+
+    const mainImage =
+        document.getElementById("main-product-image");
+
+
+    if (!mainImage) return;
+
+
+    mainImage.src = image;
+
+
+    // Remove active class
+
+    document
+        .querySelectorAll(".product-thumbnail")
+        .forEach(item => {
+
+            item.classList.remove("active");
+
+        });
+
+
+    // Add active class
+
+    if (thumbnail) {
+
+        thumbnail.classList.add("active");
+
+    }
+
+}
+
+
+// ==========================================
+// RELATED PRODUCTS
+// ==========================================
+
+function displayRelatedProducts(currentProduct) {
+
+    const container =
+        document.getElementById("related-products");
+
+
+    if (!container) return;
+
+
+    const related =
+        products
+            .filter(item =>
+                item.category === currentProduct.category &&
+                item.id !== currentProduct.id
+            )
+            .slice(0, 4);
+
+
+    if (related.length === 0) {
+
+        container.innerHTML = "";
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    related.forEach(product => {
+
+        const isWishlisted =
+            typeof wishlist !== "undefined" &&
+            wishlist.some(
+                item => item.id === product.id
+            );
+
+
+        container.innerHTML += `
+
+            <div
+                class="product-card related-product-card"
+                onclick="openProduct(${product.id})"
+            >
+
+
+                <div class="product-image">
+
+                    <span class="product-category">
+
+                        ${product.category}
+
+                    </span>
+
+
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                        onerror="
+                            this.src='images/iphone-16.jpg'
+                        "
+                    >
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <h3>
+
+                        ${product.name}
+
+                    </h3>
+
+
+                    <p class="category-name">
+
+                        ${product.category}
+
+                    </p>
+
+
+                    <p class="price">
+
+                        ₹${product.price.toLocaleString("en-IN")}
+
+                    </p>
+
+
+                    <button
+                        class="
+                            wishlist-btn
+                            ${isWishlisted ? "wishlisted" : ""}
+                        "
+                        onclick="
+                            event.stopPropagation();
+                            toggleWishlist(${product.id});
+                        "
+                    >
+
+                        ${
+                            isWishlisted
+                                ? "❤️ Wishlisted"
+                                : "♡ Wishlist"
+                        }
+
+                    </button>
+
+
+                    <button
+                        class="add-cart-btn"
+                        onclick="
+                            event.stopPropagation();
+                            addCart(${product.id});
+                        "
+                    >
+
+                        🛒 Add to Cart
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+// ==========================================
+// OPEN PRODUCT
+// ==========================================
+
+function openProduct(id) {
+
+    window.location.href =
+        "product.html?id=" + id;
 
 }
 
@@ -470,9 +746,7 @@ function changeDetailQty(change) {
 
 
     const quantityElement =
-        document.getElementById(
-            "detail-quantity"
-        );
+        document.getElementById("detail-quantity");
 
 
     if (quantityElement) {
@@ -493,8 +767,7 @@ function addProductToCart(id) {
 
     const product =
         products.find(
-            item =>
-                item.id === id
+            item => item.id === id
         );
 
 
@@ -503,8 +776,7 @@ function addProductToCart(id) {
 
     const existing =
         cart.find(
-            item =>
-                item.id === id
+            item => item.id === id
         );
 
 
@@ -533,27 +805,20 @@ function addProductToCart(id) {
 
 
     showCartMessage(
-
         `${product.name} × ${detailQuantity} added 🛒`
-
     );
 
-
-    // Reset quantity
 
     detailQuantity = 1;
 
 
     const quantityElement =
-        document.getElementById(
-            "detail-quantity"
-        );
+        document.getElementById("detail-quantity");
 
 
     if (quantityElement) {
 
-        quantityElement.textContent =
-            "1";
+        quantityElement.textContent = "1";
 
     }
 
@@ -561,15 +826,13 @@ function addProductToCart(id) {
 
 
 // ==========================================
-// UPDATE PRODUCT WISHLIST BUTTON
+// UPDATE WISHLIST BUTTON
 // ==========================================
 
 function updateProductWishlistButton(id) {
 
     const button =
-        document.getElementById(
-            "wishlist-btn"
-        );
+        document.getElementById("wishlist-btn");
 
 
     if (!button) return;
@@ -577,8 +840,7 @@ function updateProductWishlistButton(id) {
 
     const exists =
         wishlist.some(
-            item =>
-                item.id === id
+            item => item.id === id
         );
 
 
