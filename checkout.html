@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | YONICk</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     HEADER
+========================================== -->
+
+<header>
+
+    <h1 class="logo">
+        YONICk
+    </h1>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <a href="wishlist.html">
+            ❤️ Wishlist
+            (<span id="wishlist-count">0</span>)
+        </a>
+
+        <a href="cart.html">
+            🛒 Cart
+            (<span id="cart-count">0</span>)
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ==========================================
+     MAIN
+========================================== -->
+
+<main>
+
+
+    <h2 class="cart-title">
+        💳 Checkout
+    </h2>
+
+
+    <div class="checkout-layout">
+
+
+        <!-- ======================================
+             CUSTOMER INFORMATION
+        ======================================= -->
+
+        <section class="checkout-form">
+
+            <h2>
+                📦 Delivery Information
+            </h2>
+
+
+            <form id="checkout-form">
+
+
+                <!-- NAME -->
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your full name"
+                    minlength="3"
+                    required>
+
+
+
+                <!-- PHONE -->
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter 10-digit phone number"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    required>
+
+
+
+                <!-- EMAIL -->
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required>
+
+
+
+                <!-- ADDRESS -->
+
+                <label for="address">
+                    Address
+                </label>
+
+                <textarea
+                    id="address"
+                    rows="4"
+                    placeholder="House No, Street, Area"
+                    minlength="10"
+                    required></textarea>
+
+
+
+                <!-- CITY + STATE -->
+
+                <div class="form-row">
+
+
+                    <div>
+
+                        <label for="city">
+                            City
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="City"
+                            required>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <label for="state">
+                            State
+                        </label>
+
+                        <input
+                            type="text"
+                            id="state"
+                            placeholder="State"
+                            required>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- PIN -->
+
+                <label for="pincode">
+                    PIN Code
+                </label>
+
+                <input
+                    type="text"
+                    id="pincode"
+                    placeholder="6-digit PIN"
+                    pattern="[0-9]{6}"
+                    maxlength="6"
+                    required>
+
+
+
+                <!-- ==================================
+                     PAYMENT
+                =================================== -->
+
+                <h2 class="payment-title">
+                    💳 Payment Method
+                </h2>
+
+
+                <div class="payment-options">
+
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Cash on Delivery"
+                            checked>
+
+                        💵 Cash on Delivery
+
+                    </label>
+
+
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="UPI">
+
+                        📱 UPI
+
+                    </label>
+
+
+
+                    <label class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Debit / Credit Card">
+
+                        💳 Debit / Credit Card
+
+                    </label>
+
+
+                </div>
+
+
+
+                <!-- ==================================
+                     PLACE ORDER
+                =================================== -->
+
+                <button
+                    type="submit"
+                    class="place-order-btn">
+
+                    ✅ Place Order
+
+                </button>
+
+
+            </form>
+
+        </section>
+
+
+
+        <!-- ======================================
+             ORDER SUMMARY
+        ======================================= -->
+
+        <aside class="summary-box checkout-summary">
+
+
+            <h2>
+                🛍️ Your Order
+            </h2>
+
+
+            <!-- PRODUCTS -->
+
+            <div id="checkout-items"></div>
+
+
+            <hr>
+
+
+
+            <!-- SUBTOTAL -->
+
+            <div class="summary-row">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <span id="checkout-subtotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+
+            <!-- DELIVERY -->
+
+            <div class="summary-row">
+
+                <span>
+                    Delivery
+                </span>
+
+                <span id="checkout-delivery">
+                    FREE
+                </span>
+
+            </div>
+
+
+
+            <!-- DISCOUNT -->
+
+            <div class="summary-row discount">
+
+                <span>
+                    Discount
+                </span>
+
+                <span id="checkout-discount">
+                    ₹0
+                </span>
+
+            </div>
+
+
+
+            <hr>
+
+
+
+            <!-- TOTAL -->
+
+            <div class="summary-total">
+
+                <span>
+                    Total
+                </span>
+
+                <span id="checkout-total">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <p class="checkout-note">
+
+                🔒 Your order information is stored
+                securely in your browser.
+
+            </p>
+
+
+            <a
+                href="cart.html"
+                class="continue-shopping">
+
+                ← Back to Cart
+
+            </a>
+
+
+        </aside>
+
+    </div>
+
+</main>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>
+            YONICk
+        </h2>
+
+        <p>
+            Thank you for shopping with us.
+        </p>
+
+        <p>
+            © 2026 YONICk |
+            All Rights Reserved
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+
+<script src="js/products.js"></script>
+
+<script src="js/cart.js"></script>
+
+<script src="js/wishlist.js"></script>
+
+
+<script>
+
+
+// ==========================================
+// GLOBAL CHECKOUT DATA
+// ==========================================
+
+let checkoutSubtotal = 0;
+
+let checkoutDelivery = 0;
+
+let checkoutDiscount = 0;
+
+let checkoutTotal = 0;
+
+
+
+// ==========================================
+// PAGE LOAD
+// ==========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        updateCartCount();
+
+        updateWishlistCount();
+
+        loadCheckout();
+
+    }
+);
+
+
+
+// ==========================================
+// WISHLIST COUNT
+// ==========================================
+
+function updateWishlistCount() {
+
+    const wishlist =
+        JSON.parse(
+            localStorage.getItem("wishlist")
+        ) || [];
+
+
+    const element =
+        document.getElementById(
+            "wishlist-count"
+        );
+
+
+    if (element) {
+
+        element.textContent =
+            wishlist.length;
+
+    }
+
+}
+
+
+
+// ==========================================
+// LOAD CHECKOUT
+// ==========================================
+
+function loadCheckout() {
+
+    if (!cart || cart.length === 0) {
+
+        alert(
+            "Your cart is empty!"
+        );
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    const container =
+        document.getElementById(
+            "checkout-items"
+        );
+
+
+    container.innerHTML = "";
+
+
+    checkoutSubtotal = 0;
+
+
+
+    // ======================================
+    // DISPLAY CART ITEMS
+    // ======================================
+
+    cart.forEach(item => {
+
+
+        const itemTotal =
+            item.price *
+            item.quantity;
+
+
+        checkoutSubtotal +=
+            itemTotal;
+
+
+
+        container.innerHTML += `
+
+            <div class="checkout-item">
+
+                <div>
+
+                    <strong>
+                        ${item.name}
+                    </strong>
+
+                    <small>
+                        ${item.category}
+                    </small>
+
+                    <span>
+                        Qty: ${item.quantity}
+                    </span>
+
+                </div>
+
+
+                <strong>
+
+                    ₹${itemTotal.toLocaleString("en-IN")}
+
+                </strong>
+
+            </div>
+
+        `;
+
+    });
+
+
+
+    // ======================================
+    // DELIVERY
+    // ======================================
+
+    checkoutDelivery = 0;
+
+
+    if (
+        checkoutSubtotal > 0 &&
+        checkoutSubtotal < 1000
+    ) {
+
+        checkoutDelivery = 99;
+
+    }
+
+
+
+    // ======================================
+    // DISCOUNT
+    // ======================================
+
+    checkoutDiscount = 0;
+
+
+    if (
+        checkoutSubtotal >= 50000
+    ) {
+
+        checkoutDiscount =
+            checkoutSubtotal * 0.10;
+
+    }
+
+
+
+    // ======================================
+    // TOTAL
+    // ======================================
+
+    checkoutTotal =
+        checkoutSubtotal +
+        checkoutDelivery -
+        checkoutDiscount;
+
+
+
+    updateCheckoutSummary();
+
+}
+
+
+
+// ==========================================
+// UPDATE SUMMARY
+// ==========================================
+
+function updateCheckoutSummary() {
+
+
+    document.getElementById(
+        "checkout-subtotal"
+    ).textContent =
+        formatPrice(
+            checkoutSubtotal
+        );
+
+
+
+    document.getElementById(
+        "checkout-delivery"
+    ).textContent =
+
+        checkoutDelivery === 0
+
+            ? "FREE"
+
+            : formatPrice(
+                checkoutDelivery
+            );
+
+
+
+    document.getElementById(
+        "checkout-discount"
+    ).textContent =
+
+        checkoutDiscount > 0
+
+            ? "- " +
+              formatPrice(
+                  checkoutDiscount
+              )
+
+            : "₹0";
+
+
+
+    document.getElementById(
+        "checkout-total"
+    ).textContent =
+        formatPrice(
+            checkoutTotal
+        );
+
+}
+
+
+
+// ==========================================
+// FORM SUBMIT
+// ==========================================
+
+document.getElementById(
+    "checkout-form"
+).addEventListener(
+    "submit",
+    function (event) {
+
+
+        event.preventDefault();
+
+
+
+        // Browser validation
+
+        if (
+            !this.checkValidity()
+        ) {
+
+            this.reportValidity();
+
+            return;
+
+        }
+
+
+
+        // ==================================
+        // CUSTOMER DATA
+        // ==================================
+
+        const name =
+            document.getElementById(
+                "name"
+            ).value.trim();
+
+
+
+        const phone =
+            document.getElementById(
+                "phone"
+            ).value.trim();
+
+
+
+        const email =
+            document.getElementById(
+                "email"
+            ).value.trim();
+
+
+
+        const address =
+            document.getElementById(
+                "address"
+            ).value.trim();
+
+
+
+        const city =
+            document.getElementById(
+                "city"
+            ).value.trim();
+
+
+
+        const state =
+            document.getElementById(
+                "state"
+            ).value.trim();
+
+
+
+        const pincode =
+            document.getElementById(
+                "pincode"
+            ).value.trim();
+
+
+
+        const payment =
+            document.querySelector(
+                'input[name="payment"]:checked'
+            ).value;
+
+
+
+        // ==================================
+        // EXTRA VALIDATION
+        // ==================================
+
+        if (
+            !/^[0-9]{10}$/.test(phone)
+        ) {
+
+            alert(
+                "Please enter a valid 10-digit phone number."
+            );
+
+            return;
+
+        }
+
+
+
+        if (
+            !/^[0-9]{6}$/.test(pincode)
+        ) {
+
+            alert(
+                "Please enter a valid 6-digit PIN code."
+            );
+
+            return;
+
+        }
+
+
+
+        // ==================================
+        // GENERATE ORDER ID
+        // ==================================
+
+        const orderId =
+            "YON" +
+            Date.now()
+                .toString()
+                .slice(-8);
+
+
+
+        // ==================================
+        // CREATE ORDER
+        // ==================================
+
+        const order = {
+
+            orderId: orderId,
+
+            customer: {
+
+                name: name,
+
+                phone: phone,
+
+                email: email,
+
+                address: address,
+
+                city: city,
+
+                state: state,
+
+                pincode: pincode
+
+            },
+
+            payment: payment,
+
+            items: [...cart],
+
+            subtotal:
+                checkoutSubtotal,
+
+            delivery:
+                checkoutDelivery,
+
+            discount:
+                checkoutDiscount,
+
+            total:
+                checkoutTotal,
+
+            date:
+                new Date()
+                    .toLocaleString(
+                        "en-IN"
+                    )
+
+        };
+
+
+
+        // ==================================
+        // SAVE ORDER
+        // ==================================
+
+        localStorage.setItem(
+            "lastOrder",
+            JSON.stringify(order)
+        );
+
+
+
+        // ==================================
+        // SAVE ORDER HISTORY
+        // ==================================
+
+        let orderHistory =
+            JSON.parse(
+                localStorage.getItem(
+                    "orderHistory"
+                )
+            ) || [];
+
+
+        orderHistory.unshift(
+            order
+        );
+
+
+        localStorage.setItem(
+            "orderHistory",
+            JSON.stringify(
+                orderHistory
+            )
+        );
+
+
+
+        // ==================================
+        // CLEAR CART
+        // ==================================
+
+        cart = [];
+
+
+        localStorage.removeItem(
+            "cart"
+        );
+
+
+
+        // ==================================
+        // REDIRECT
+        // ==================================
+
+        window.location.href =
+            "order-success.html";
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

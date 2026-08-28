@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>YONICk | Premium Store</title>
 
     <link rel="stylesheet" href="css/style.css">
@@ -15,75 +16,318 @@
     <h1 class="logo">YONICk</h1>
 
     <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="cart.html">
-            🛒 Cart (<span id="cart-count">0</span>)
+
+        <a href="index.html">
+            Home
         </a>
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <!-- WISHLIST -->
+        <a href="wishlist.html">
+            ❤️ Wishlist
+            (<span id="wishlist-count">0</span>)
+        </a>
+
+        <!-- CART -->
+        <a href="cart.html">
+            🛒 Cart
+            (<span id="cart-count">0</span>)
+        </a>
+
     </nav>
 
 </header>
 
+
 <main>
 
-    <!-- Hero Section -->
+    <!-- ========================================== -->
+    <!-- HERO -->
+    <!-- ========================================== -->
+
     <section class="hero">
 
-        <h2>🔥 Big Sale is Live!</h2>
+        <div class="hero-content">
 
-        <p>Up to 69% OFF on Electronics</p>
+            <span class="sale-badge">
+                LIMITED TIME OFFER
+            </span>
 
-        <button>Shop Now</button>
+            <h2>
+                🔥 Big Sale is Live!
+            </h2>
 
-    </section>
+            <p>
+                Up to <strong>69% OFF</strong> on Electronics
+            </p>
 
-    <!-- Search -->
-    <section class="search-section">
-
-        <input
-            type="text"
-            id="search"
-            placeholder="Search Products..."
-            onkeyup="searchProduct()">
-
-    </section>
-
-    <!-- Categories -->
-
-    <section class="categories">
-
-        <h2>Shop by Category</h2>
-
-        <div class="category-container">
-
-            <button onclick="filterCategory('All')">All</button>
-            <button onclick="filterCategory('Mobile')">📱 Mobiles</button>
-            <button onclick="filterCategory('Laptop')">💻 Laptops</button>
-            <button onclick="filterCategory('Audio')">🎧 Audio</button>
-            <button onclick="filterCategory('Gaming')">🎮 Gaming</button>
-            <button onclick="filterCategory('Fashion')">👟 Fashion</button>
-            <button onclick="filterCategory('Electronics')">🏠 Electronics</button>
+            <button id="shop-now">
+                Shop Now →
+            </button>
 
         </div>
 
     </section>
 
-    <h2 class="heading">Featured Products</h2>
+
+    <!-- ========================================== -->
+    <!-- SEARCH -->
+    <!-- ========================================== -->
+
+    <section class="search-section">
+
+        <div class="search-box">
+
+            <span>🔍</span>
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search products..."
+            >
+
+            <button id="clear-search">
+                ✕
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- CATEGORIES -->
+    <!-- ========================================== -->
+
+    <section class="categories">
+
+        <h2>
+            Shop by Category
+        </h2>
+
+        <div class="category-container">
+
+            <button
+                class="category-btn active"
+                onclick="filterCategory('All')"
+            >
+                🛍️ All
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Mobile')"
+            >
+                📱 Mobiles
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Laptop')"
+            >
+                💻 Laptops
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Audio')"
+            >
+                🎧 Audio
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Gaming')"
+            >
+                🎮 Gaming
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Fashion')"
+            >
+                👟 Fashion
+            </button>
+
+            <button
+                class="category-btn"
+                onclick="filterCategory('Electronics')"
+            >
+                🏠 Electronics
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- FILTERS -->
+    <!-- ========================================== -->
+
+    <section class="filter-section">
+
+        <div class="filter-item">
+
+            <label for="price-filter">
+                💰 Maximum Price
+            </label>
+
+            <input
+                type="range"
+                id="price-filter"
+                min="500"
+                max="200000"
+                value="200000"
+                step="500"
+            >
+
+            <span id="price-value">
+                ₹2,00,000
+            </span>
+
+        </div>
+
+
+        <div class="filter-item">
+
+            <label for="sort-products">
+                ↕️ Sort By
+            </label>
+
+            <select id="sort-products">
+
+                <option value="default">
+                    Recommended
+                </option>
+
+                <option value="low">
+                    Price: Low → High
+                </option>
+
+                <option value="high">
+                    Price: High → Low
+                </option>
+
+                <option value="az">
+                    Name: A → Z
+                </option>
+
+                <option value="za">
+                    Name: Z → A
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- PRODUCT HEADING -->
+    <!-- ========================================== -->
+
+    <section class="product-heading">
+
+        <div>
+
+            <h2>
+                Featured Products
+            </h2>
+
+            <p>
+                <span id="product-count">0</span>
+                products available
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- PRODUCTS -->
+    <!-- ========================================== -->
 
     <div class="products"></div>
 
+
+    <!-- ========================================== -->
+    <!-- NO PRODUCTS -->
+    <!-- ========================================== -->
+
+    <div
+        id="no-products"
+        class="no-products"
+    >
+
+        <div>
+            😔
+        </div>
+
+        <h2>
+            No products found
+        </h2>
+
+        <p>
+            Try another search or category.
+        </p>
+
+        <button onclick="resetFilters()">
+            Reset Filters
+        </button>
+
+    </div>
+
 </main>
+
+
+<!-- ========================================== -->
+<!-- FOOTER -->
+<!-- ========================================== -->
 
 <footer>
 
-    <p>© 2026 YONICk | All Rights Reserved</p>
+    <div class="footer-content">
+
+        <h2>
+            YONICk
+        </h2>
+
+        <p>
+            Your premium destination for electronics,
+            fashion and lifestyle products.
+        </p>
+
+        <p>
+            © 2026 YONICk | All Rights Reserved
+        </p>
+
+    </div>
 
 </footer>
 
+
+<!-- ========================================== -->
+<!-- JAVASCRIPT -->
+<!-- ========================================== -->
+
 <script src="js/products.js"></script>
+
 <script src="js/cart.js"></script>
+
 <script src="js/script.js"></script>
 
 </body>

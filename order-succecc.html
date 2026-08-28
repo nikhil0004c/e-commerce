@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Order Successful | YONICk</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     HEADER
+========================================== -->
+
+<header>
+
+    <h1 class="logo">
+        YONICk
+    </h1>
+
+
+    <nav>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <a href="wishlist.html">
+            ❤️ Wishlist
+            (<span id="wishlist-count">0</span>)
+        </a>
+
+        <a href="cart.html">
+            🛒 Cart
+            (<span id="cart-count">0</span>)
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ==========================================
+     MAIN
+========================================== -->
+
+<main>
+
+
+    <section class="success-page">
+
+
+        <!-- SUCCESS ICON -->
+
+        <div class="success-icon">
+            ✅
+        </div>
+
+
+
+        <!-- TITLE -->
+
+        <h1>
+            Order Placed Successfully!
+        </h1>
+
+
+        <p class="success-message">
+            Thank you for shopping with YONICk.
+            Your order has been received.
+        </p>
+
+
+
+        <!-- ORDER ID -->
+
+        <div class="order-id-box">
+
+            <span>
+                Order ID
+            </span>
+
+            <strong id="success-order-id">
+                YON00000000
+            </strong>
+
+        </div>
+
+
+
+        <!-- ======================================
+             ORDER INFORMATION
+        ======================================= -->
+
+        <div class="success-layout">
+
+
+            <!-- ORDER DETAILS -->
+
+            <section class="success-card">
+
+                <h2>
+                    📦 Order Details
+                </h2>
+
+
+                <div id="success-items"></div>
+
+
+                <hr>
+
+
+                <div class="success-row">
+
+                    <span>
+                        Payment
+                    </span>
+
+                    <strong id="success-payment">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="success-row">
+
+                    <span>
+                        Order Date
+                    </span>
+
+                    <strong id="success-date">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="success-row total-row">
+
+                    <span>
+                        Total Paid
+                    </span>
+
+                    <strong id="success-total">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- DELIVERY DETAILS -->
+
+            <section class="success-card">
+
+                <h2>
+                    🚚 Delivery Address
+                </h2>
+
+
+                <div
+                    id="success-address"
+                    class="delivery-address">
+
+                </div>
+
+
+                <div class="delivery-status">
+
+                    <span>
+                        🟢
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Order Confirmed
+                        </strong>
+
+                        <p>
+                            Your order will be
+                            delivered soon.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- ======================================
+             ACTION BUTTONS
+        ======================================= -->
+
+        <div class="success-buttons">
+
+
+            <a
+                href="index.html"
+                class="success-btn primary">
+
+                🛍️ Continue Shopping
+
+            </a>
+
+
+            <a
+                href="orders.html"
+                class="success-btn secondary">
+
+                📦 View My Orders
+
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+</main>
+
+
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>
+            YONICk
+        </h2>
+
+        <p>
+            Your premium destination for
+            electronics, fashion and
+            lifestyle products.
+        </p>
+
+        <p>
+            © 2026 YONICk |
+            All Rights Reserved
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- ==========================================
+     JAVASCRIPT
+========================================== -->
+
+<script src="js/products.js"></script>
+
+<script src="js/cart.js"></script>
+
+
+<script>
+
+
+// ==========================================
+// PAGE LOAD
+// ==========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        updateCartCount();
+
+        updateWishlistCount();
+
+        loadOrder();
+
+    }
+);
+
+
+
+// ==========================================
+// WISHLIST COUNT
+// ==========================================
+
+function updateWishlistCount() {
+
+    const wishlist =
+        JSON.parse(
+            localStorage.getItem("wishlist")
+        ) || [];
+
+
+    const element =
+        document.getElementById(
+            "wishlist-count"
+        );
+
+
+    if (element) {
+
+        element.textContent =
+            wishlist.length;
+
+    }
+
+}
+
+
+
+// ==========================================
+// LOAD ORDER
+// ==========================================
+
+function loadOrder() {
+
+
+    const order =
+        JSON.parse(
+            localStorage.getItem(
+                "lastOrder"
+            )
+        );
+
+
+    // ======================================
+    // NO ORDER FOUND
+    // ======================================
+
+    if (!order) {
+
+        document.querySelector(
+            ".success-page"
+        ).innerHTML = `
+
+            <div class="success-icon">
+                😔
+            </div>
+
+            <h1>
+                No Recent Order Found
+            </h1>
+
+            <p class="success-message">
+
+                We couldn't find your
+                recent order.
+
+            </p>
+
+            <a
+                href="index.html"
+                class="success-btn primary">
+
+                🛍️ Go to Store
+
+            </a>
+
+        `;
+
+        return;
+
+    }
+
+
+
+    // ======================================
+    // ORDER ID
+    // ======================================
+
+    document.getElementById(
+        "success-order-id"
+    ).textContent =
+        order.orderId;
+
+
+
+    // ======================================
+    // PAYMENT
+    // ======================================
+
+    document.getElementById(
+        "success-payment"
+    ).textContent =
+        order.payment;
+
+
+
+    // ======================================
+    // DATE
+    // ======================================
+
+    document.getElementById(
+        "success-date"
+    ).textContent =
+        order.date;
+
+
+
+    // ======================================
+    // TOTAL
+    // ======================================
+
+    document.getElementById(
+        "success-total"
+    ).textContent =
+        formatPrice(
+            order.total
+        );
+
+
+
+    // ======================================
+    // PRODUCTS
+    // ======================================
+
+    const itemsContainer =
+        document.getElementById(
+            "success-items"
+        );
+
+
+    itemsContainer.innerHTML = "";
+
+
+    order.items.forEach(
+        item => {
+
+            const itemTotal =
+                item.price *
+                item.quantity;
+
+
+            itemsContainer.innerHTML += `
+
+                <div class="success-item">
+
+                    <div class="success-product">
+
+                        <img
+                            src="${item.image}"
+                            alt="${item.name}"
+                            onerror="
+                            this.src='images/iphone.jpg'
+                            "
+                        >
+
+                        <div>
+
+                            <strong>
+                                ${item.name}
+                            </strong>
+
+                            <span>
+                                ${item.category}
+                            </span>
+
+                            <small>
+                                Quantity:
+                                ${item.quantity}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <strong>
+
+                        ₹${itemTotal.toLocaleString("en-IN")}
+
+                    </strong>
+
+                </div>
+
+            `;
+
+        }
+    );
+
+
+
+    // ======================================
+    // DELIVERY ADDRESS
+    // ======================================
+
+    const address =
+        document.getElementById(
+            "success-address"
+        );
+
+
+    address.innerHTML = `
+
+        <strong>
+            ${order.customer.name}
+        </strong>
+
+        <p>
+            ${order.customer.address}
+        </p>
+
+        <p>
+            ${order.customer.city},
+            ${order.customer.state}
+            - ${order.customer.pincode}
+        </p>
+
+        <p>
+            📱 ${order.customer.phone}
+        </p>
+
+        <p>
+            📧 ${order.customer.email}
+        </p>
+
+    `;
+
+}
+
+</script>
+
+
+</body>
+
+</html>
